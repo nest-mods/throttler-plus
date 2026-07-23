@@ -11,5 +11,7 @@ coverage/
 .vscode/
 
 package-lock.json
+!test/e2e/http-app/package-lock.json
+!test/e2e/graphql-app/package-lock.json
 .superpowers/
 .codegraph/
