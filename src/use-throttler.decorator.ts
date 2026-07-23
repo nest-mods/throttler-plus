@@ -5,6 +5,12 @@ import ms from 'ms';
 import { ThrottlerPlusGuard } from './throttler-plus.guard.ts';
 import type { UseThrottlerOptions } from './use-throttler-options.interface.ts';
 
+/**
+ * Applies throttling to a class or method, with overrides for the configured
+ * `default` throttler.
+ *
+ * @param options Per-target overrides; omitted values inherit configuration.
+ */
 export function UseThrottler(
   options: UseThrottlerOptions = {},
 ): MethodDecorator & ClassDecorator {

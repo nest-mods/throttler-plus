@@ -47,9 +47,19 @@ function createThrottlerOptions(
   };
 }
 
+/**
+ * Global configuration module for in-memory or Redis-backed throttling.
+ * Use `UseThrottler` or register {@link ThrottlerPlusGuard} to enforce it.
+ */
 @Global()
 @Module({})
 export class ThrottlerPlusModule {
+  /**
+   * Registers the module synchronously.
+   *
+   * @param options Throttler and Redis options. Defaults to 10 requests per
+   * 60 seconds using in-memory storage.
+   */
   static forRoot(options: ThrottlerPlusModuleOptions = {}): DynamicModule {
     return {
       module: ThrottlerPlusModule,
@@ -63,6 +73,11 @@ export class ThrottlerPlusModule {
     };
   }
 
+  /**
+   * Registers the module using a synchronous or asynchronous factory.
+   *
+   * @param options Factory registration options.
+   */
   static forRootAsync(
     options: ThrottlerPlusModuleAsyncOptions,
   ): DynamicModule {

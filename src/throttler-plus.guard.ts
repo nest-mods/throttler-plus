@@ -17,6 +17,11 @@ interface GraphqlRuntimeModule {
   };
 }
 
+/**
+ * Upstream throttler guard with GraphQL support loaded when this guard first
+ * handles a GraphQL request. GraphQL usage requires the optional
+ * `@nestjs/graphql` and `graphql` peers.
+ */
 @Injectable()
 export class ThrottlerPlusGuard extends ThrottlerGuard {
   #graphqlModulePromise?: Promise<GraphqlRuntimeModule>;
