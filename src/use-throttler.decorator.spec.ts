@@ -1,5 +1,4 @@
-import 'reflect-metadata';
-
+import { describe, expect, it } from '@jest/globals';
 import { applyDecorators } from '@nestjs/common';
 import { GUARDS_METADATA } from '@nestjs/common/constants.js';
 import type {

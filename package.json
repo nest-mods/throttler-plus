@@ -33,11 +33,10 @@
   "scripts": {
     "build": "nest build --builder tsc --path tsconfig.build.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --passWithNoTests",
-    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
-    "test:cov": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
-    "test:debug": "node --inspect-brk --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
-    "test:e2e": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config ./test/jest-e2e.json --passWithNoTests"
+    "test": "deno run -A jest --passWithNoTests",
+    "test:watch": "deno run -A jest --watch",
+    "test:cov": "deno run -A jest --coverage",
+    "test:debug": "deno run --inspect-brk -A jest --runInBand"
   },
   "dependencies": {
     "@nest-lab/throttler-storage-redis": "^1.2.0",
@@ -62,6 +61,7 @@
     }
   },
   "devDependencies": {
+    "@jest/globals": "^30.4.1",
     "@nestjs/cli": "11.0.24",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
@@ -94,6 +94,9 @@
       "ts"
     ],
     "rootDir": "src",
+    "setupFiles": [
+      "<rootDir>/../test/jest.setup.ts"
+    ],
     "testRegex": ".*\\.spec\\.ts$",
     "extensionsToTreatAsEsm": [
       ".ts"

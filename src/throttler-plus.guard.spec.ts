@@ -1,5 +1,4 @@
-import 'reflect-metadata';
-
+import { afterEach, describe, expect, it, jest } from '@jest/globals';
 import {
   Controller,
   Get,
@@ -17,14 +16,10 @@ import { Test } from '@nestjs/testing';
 import request from 'supertest';
 
 let graphqlModuleLoads = 0;
-const jestRuntime = import.meta.jest as unknown as {
-  unstable_mockModule(moduleName: string, factory: () => object): void;
-  requireActual<TModule extends object = object>(moduleName: string): TModule;
-};
 
-jestRuntime.unstable_mockModule('@nestjs/graphql', () => {
+jest.unstable_mockModule('@nestjs/graphql', () => {
   graphqlModuleLoads += 1;
-  return jestRuntime.requireActual('@nestjs/graphql');
+  return jest.requireActual('@nestjs/graphql');
 });
 
 const { ThrottlerPlusGuard, ThrottlerPlusModule } = await import('./index.ts');

@@ -1,5 +1,4 @@
-import 'reflect-metadata';
-
+import { describe, expect, it, jest } from '@jest/globals';
 import { Reflector } from '@nestjs/core';
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host.js';
 import {
@@ -8,11 +7,8 @@ import {
 } from '@nestjs/throttler';
 
 const optionalPeerLoadFailure = new Error('simulated missing optional peer');
-const jestRuntime = import.meta.jest as unknown as {
-  unstable_mockModule(moduleName: string, factory: () => object): void;
-};
 
-jestRuntime.unstable_mockModule('@nestjs/graphql', () => {
+jest.unstable_mockModule('@nestjs/graphql', () => {
   throw optionalPeerLoadFailure;
 });
 

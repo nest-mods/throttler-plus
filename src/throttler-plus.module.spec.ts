@@ -1,5 +1,4 @@
-import 'reflect-metadata';
-
+import { describe, expect, it } from '@jest/globals';
 import { Module } from '@nestjs/common';
 import {
   getOptionsToken,
