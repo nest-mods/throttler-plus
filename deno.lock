@@ -1,6 +1,7 @@
 {
   "version": "5",
   "specifiers": {
+    "npm:@apollo/server@5.5.1": "5.5.1_graphql@16.14.2",
     "npm:@jest/globals@^30.4.1": "30.4.1",
     "npm:@nest-lab/throttler-storage-redis@^1.2.0": "1.2.0_@nestjs+common@11.1.28__reflect-metadata@0.2.2__rxjs@7.8.1_@nestjs+core@11.1.28__@nestjs+common@11.1.28___reflect-metadata@0.2.2___rxjs@7.8.1__@nestjs+platform-express@11.1.28__reflect-metadata@0.2.2__rxjs@7.8.1_@nestjs+throttler@6.5.0__@nestjs+common@11.1.28___reflect-metadata@0.2.2___rxjs@7.8.1__@nestjs+core@11.1.28___@nestjs+common@11.1.28____reflect-metadata@0.2.2____rxjs@7.8.1___@nestjs+platform-express@11.1.28___reflect-metadata@0.2.2___rxjs@7.8.1__reflect-metadata@0.2.2__@nestjs+platform-express@11.1.28___@nestjs+common@11.1.28____reflect-metadata@0.2.2____rxjs@7.8.1___@nestjs+core@11.1.28___reflect-metadata@0.2.2___rxjs@7.8.1__rxjs@7.8.1_ioredis@5.11.1_reflect-metadata@0.2.2_@nestjs+platform-express@11.1.28__@nestjs+common@11.1.28___reflect-metadata@0.2.2___rxjs@7.8.1__@nestjs+core@11.1.28__reflect-metadata@0.2.2__rxjs@7.8.1_rxjs@7.8.1",
     "npm:@nestjs/apollo@^13.4.2": "13.4.2_@apollo+server@5.5.1__graphql@16.14.2_@nestjs+common@11.1.28__reflect-metadata@0.2.2__rxjs@7.8.1_@nestjs+core@11.1.28__@nestjs+common@11.1.28___reflect-metadata@0.2.2___rxjs@7.8.1__@nestjs+platform-express@11.1.28__reflect-metadata@0.2.2__rxjs@7.8.1_@nestjs+graphql@13.4.2__@nestjs+common@11.1.28___reflect-metadata@0.2.2___rxjs@7.8.1__@nestjs+core@11.1.28___@nestjs+common@11.1.28____reflect-metadata@0.2.2____rxjs@7.8.1___@nestjs+platform-express@11.1.28___reflect-metadata@0.2.2___rxjs@7.8.1__graphql@16.14.2__reflect-metadata@0.2.2_graphql@16.14.2",
@@ -4465,6 +4466,7 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@apollo/server@5.5.1",
         "npm:@jest/globals@^30.4.1",
         "npm:@nest-lab/throttler-storage-redis@^1.2.0",
         "npm:@nestjs/apollo@^13.4.2",

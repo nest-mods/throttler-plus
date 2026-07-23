@@ -3,6 +3,7 @@ import {
   Module,
   type NestModule,
 } from '@nestjs/common';
+import { ApolloServerPluginInlineTraceDisabled } from '@apollo/server/plugin/disabled';
 import {
   ApolloFederationDriver,
   type ApolloFederationDriverConfig,
@@ -41,6 +42,8 @@ function redisPort(): number {
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
       autoSchemaFile: { federation: 2 },
+      // @ts-ignore Deno compares Apollo's ESM plugin type with Nest's CJS type.
+      plugins: [ApolloServerPluginInlineTraceDisabled()],
     }),
     ThrottlerPlusModule.forRootAsync({
       useFactory: () => ({
