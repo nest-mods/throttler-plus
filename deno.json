@@ -1,0 +1,14 @@
+{
+  "nodeModulesDir": "auto",
+  "preferPackageJson": true,
+  "exclude": [
+    "./test/e2e/http-app",
+    "./test/e2e/graphql-app"
+  ],
+  "fmt": {
+    "useTabs": false,
+    "indentWidth": 2,
+    "singleQuote": true,
+    "semiColons": true
+  }
+}

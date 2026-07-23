@@ -1,0 +1,8 @@
+**
+!package.tgz
+!package.json
+!tsconfig*.json
+!src
+!src/**
+!test
+!test/**
