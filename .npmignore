@@ -1,0 +1,5 @@
+src/**/*.spec.ts
+src/**/*.test.ts
+test/
+coverage/
+*.tgz
