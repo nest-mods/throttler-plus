@@ -21,6 +21,7 @@
     "npm:jest@30": "30.4.2_@types+node@24.13.3_ts-node@10.9.2__@types+node@24.13.3__typescript@5.9.3_typescript@5.9.3",
     "npm:ms@^2.1.3": "2.1.3",
     "npm:reflect-metadata@~0.2.2": "0.2.2",
+    "npm:rimraf@^6.1.3": "6.1.3",
     "npm:rxjs@^7.8.1": "7.8.1",
     "npm:source-map-support@~0.5.21": "0.5.21",
     "npm:supertest@7": "7.2.2",
@@ -3452,6 +3453,14 @@
     "reusify@1.1.0": {
       "integrity": "sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw=="
     },
+    "rimraf@6.1.3": {
+      "integrity": "sha512-LKg+Cr2ZF61fkcaK1UdkH2yEBBKnYjTyWzTJT6KNPcSPaiT7HSdhtMXQuN5wkTX0Xu72KQ1l8S42rlmexS2hSA==",
+      "dependencies": [
+        "glob@13.0.6",
+        "package-json-from-dist"
+      ],
+      "bin": true
+    },
     "router@2.2.0": {
       "integrity": "sha512-nLTrUKm2UyiL7rlhapu/Zl45FwNgkZGaCpZbIHajDYgwlJCOzLSk+cIPAnsEqV955GjILJnKbdQC1nVPz+gAYQ==",
       "dependencies": [
@@ -4142,6 +4151,7 @@
         "npm:jest@30",
         "npm:ms@^2.1.3",
         "npm:reflect-metadata@~0.2.2",
+        "npm:rimraf@^6.1.3",
         "npm:rxjs@^7.8.1",
         "npm:source-map-support@~0.5.21",
         "npm:supertest@7",
