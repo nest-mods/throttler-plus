@@ -86,9 +86,9 @@ contain `*.spec.ts`, `*.test.ts`, or `test/` paths.
   reusable verification workflow. Its `skip_e2e` input defaults to `false`.
 - `.github/workflows/publish.yml` runs only for pushed `v*` tags. The tag name
   without the leading `v` must equal the version in `package.json`.
-- Publishing uses the organization-level `NPM_TOKEN`, the public npm registry,
-  public package access, and npm provenance. Never print, replace, or commit
-  secret values.
+- Publishing uses npm Trusted Publishing with GitHub Actions OIDC, the public
+  npm registry, public package access, and npm provenance. Do not add a
+  long-lived npm publishing token to the workflow.
 - After npm publishing succeeds, the workflow creates a GitHub Release for the
   same tag with generated release notes.
 - Keep Node.js and Deno versions aligned between CI and publishing workflows.
