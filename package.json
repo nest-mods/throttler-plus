@@ -37,7 +37,7 @@
     }
   },
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "npm run clean",
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "nest build --builder tsc --path tsconfig.build.json",
     "build:cjs": "nest build --builder tsc --path tsconfig.cjs.json",
@@ -52,8 +52,10 @@
     "test:e2e:graphql": "docker compose -f test/e2e/graphql-app/compose.yaml run --rm --build app",
     "posttest:e2e:graphql": "docker compose -f test/e2e/graphql-app/compose.yaml down --volumes --remove-orphans",
     "test:e2e": "npm run test:e2e:http && npm run test:e2e:graphql",
-    "posttest:e2e": "rimraf nest-mods-throttler-plus-*.tgz test/e2e/*/package.tgz",
-    "pretest:e2e": "rimraf nest-mods-throttler-plus-*.tgz test/e2e/*/package.tgz && npm run build && npm pack && cp nest-mods-throttler-plus-*.tgz test/e2e/http-app/package.tgz && cp nest-mods-throttler-plus-*.tgz test/e2e/graphql-app/package.tgz"
+    "prepack": "npm run build",
+    "clean": "rimraf *.tgz test/e2e/*/package.tgz dist",
+    "posttest:e2e": "npm run clean",
+    "pretest:e2e": "npm pack && cp *.tgz test/e2e/http-app/package.tgz && cp *.tgz test/e2e/graphql-app/package.tgz"
   },
   "dependencies": {
     "@nest-lab/throttler-storage-redis": "^1.2.0",
