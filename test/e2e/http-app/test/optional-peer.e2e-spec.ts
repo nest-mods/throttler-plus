@@ -7,6 +7,7 @@ import {
   ThrottlerPlusGuard,
   ThrottlerPlusModule,
 } from '@nest-mods/throttler-plus';
+import { createIsolatedRedisOptions } from '../src/redis-fixture';
 
 class ContextTarget {
   handle(): void {}
@@ -24,7 +25,11 @@ describe('HTTP-only optional peer boundary', () => {
 
   it('preserves the module-loading cause when GraphQL peers are absent', async () => {
     moduleFixture = await Test.createTestingModule({
-      imports: [ThrottlerPlusModule.forRoot()],
+      imports: [
+        ThrottlerPlusModule.forRootAsync({
+          useFactory: () => ({ redis: createIsolatedRedisOptions() }),
+        }),
+      ],
     }).compile();
     await moduleFixture.init();
     const guard = moduleFixture.get(ThrottlerPlusGuard);
@@ -46,8 +51,12 @@ describe('HTTP-only optional peer boundary', () => {
     expect((rejection as Error).message).toBe(
       'GraphQL throttling requires both optional peers "@nestjs/graphql" and "graphql". Install both packages before handling GraphQL requests.',
     );
-    expect((rejection as Error & { cause?: unknown }).cause).toBeInstanceOf(
-      Error,
+    const cause = (rejection as Error & { cause?: unknown }).cause;
+    expect(cause).toEqual(
+      expect.objectContaining({ code: 'MODULE_NOT_FOUND' }),
+    );
+    expect((cause as { message?: unknown }).message).toEqual(
+      expect.stringContaining('@nestjs/graphql'),
     );
   });
 });

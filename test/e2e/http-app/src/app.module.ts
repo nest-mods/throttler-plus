@@ -12,9 +12,14 @@ import {
   ScenarioController,
 } from './app.controller';
 import { FixtureUserMiddleware } from './fixture-user.middleware';
+import { createIsolatedRedisOptions } from './redis-fixture';
 
 @Module({
-  imports: [ThrottlerPlusModule.forRoot()],
+  imports: [
+    ThrottlerPlusModule.forRootAsync({
+      useFactory: () => ({ redis: createIsolatedRedisOptions() }),
+    }),
+  ],
   controllers: [
     ScenarioController,
     ClassDefaultController,

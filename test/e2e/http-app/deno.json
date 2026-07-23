@@ -1,0 +1,18 @@
+{
+  "imports": {
+    "@nest-mods/throttler-plus": "../../../src/index.ts"
+  },
+  "nodeModulesDir": "manual",
+  "unstable": ["sloppy-imports"],
+  "fmt": {
+    "useTabs": false,
+    "indentWidth": 2,
+    "singleQuote": true,
+    "semiColons": true
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-sloppy-imports"]
+    }
+  }
+}

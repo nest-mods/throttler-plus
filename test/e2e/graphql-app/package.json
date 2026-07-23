@@ -10,6 +10,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nest-mods/throttler-plus": "file:./package.tgz",
     "@apollo/server": "5.5.1",
     "@apollo/subgraph": "2.14.0",
     "@as-integrations/express5": "1.1.2",

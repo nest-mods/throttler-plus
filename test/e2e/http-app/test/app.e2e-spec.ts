@@ -332,6 +332,10 @@ async function send(
   return await pending;
 }
 
+function successStatus(fixture: ScenarioRequest): number {
+  return fixture.method === 'post' ? 201 : 200;
+}
+
 function expectRateLimitHeaders(
   response: Response,
   limit: number,
@@ -379,7 +383,7 @@ describe('HTTP throttling scenarios', () => {
     async (fixture) => {
       const response = await send(app!, fixture);
 
-      expect(response.status).toBe(200);
+      expect(response.status).toBe(successStatus(fixture));
       expectRateLimitHeaders(response, fixture.limit, fixture.ttlSeconds);
       expect(trackerObservations).toEqual(
         fixture.observation ? [fixture.observation] : [],
@@ -391,7 +395,7 @@ describe('HTTP throttling scenarios', () => {
     scenarioFixtures.find(({ scenario }) => scenario === 'payload-hash')!,
     scenarioFixtures.find(({ scenario }) => scenario === 'email-ip')!,
   ])('$scenario rejects a repeated limit-one key', async (fixture) => {
-    expect((await send(app!, fixture)).status).toBe(200);
+    expect((await send(app!, fixture)).status).toBe(successStatus(fixture));
     expect((await send(app!, fixture)).status).toBe(429);
     expect(trackerObservations).toEqual([
       fixture.observation,
@@ -404,8 +408,8 @@ describe('HTTP throttling scenarios', () => {
       ({ scenario }) => scenario === 'composed-header',
     )!;
 
-    expect((await send(app!, fixture)).status).toBe(200);
-    expect((await send(app!, fixture)).status).toBe(200);
+    expect((await send(app!, fixture)).status).toBe(successStatus(fixture));
+    expect((await send(app!, fixture)).status).toBe(successStatus(fixture));
     expect((await send(app!, fixture)).status).toBe(429);
     expect(trackerObservations).toEqual([
       fixture.observation,
@@ -420,8 +424,8 @@ describe('HTTP throttling scenarios', () => {
       const firstResponse = await send(app!, first);
       const secondResponse = await send(app!, second);
 
-      expect(firstResponse.status).toBe(200);
-      expect(secondResponse.status).toBe(200);
+      expect(firstResponse.status).toBe(successStatus(first));
+      expect(secondResponse.status).toBe(successStatus(second));
       expect(firstResponse.headers['x-ratelimit-remaining']).toBe(
         String(expectedRemaining),
       );
