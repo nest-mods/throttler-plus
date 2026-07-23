@@ -1,5 +1,7 @@
 # @nest-mods/throttler-plus
 
+[![npm version](https://img.shields.io/npm/v/%40nest-mods%2Fthrottler-plus.svg)](https://www.npmjs.com/package/@nest-mods/throttler-plus)
+
 Additional throttling integrations for NestJS 11, built on top of
 [`@nestjs/throttler`](https://github.com/nestjs/throttler).
 
