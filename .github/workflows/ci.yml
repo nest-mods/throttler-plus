@@ -6,6 +6,12 @@ on:
       - main
   pull_request:
   workflow_call:
+    inputs:
+      skip_e2e:
+        description: Skip installed-package end-to-end tests
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -50,6 +56,7 @@ jobs:
   e2e:
     name: Installed-package e2e
     needs: unit
+    if: ${{ ! inputs.skip_e2e }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:

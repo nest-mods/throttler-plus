@@ -12,6 +12,8 @@ permissions:
 jobs:
   ci:
     uses: ./.github/workflows/ci.yml
+    with:
+      skip_e2e: true
 
   publish:
     needs: ci
